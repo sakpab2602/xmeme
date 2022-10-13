@@ -6,6 +6,7 @@ const path = require('path');
 const mongoose = require("mongoose");
 const memes = require('./model/meme');
 const home = require('./routes/home');
+const userRoutes=require('./routes/users');
 mongoose.Promise = Promise;
 const app = express();
 const methodOverride = require('method-override');
@@ -21,7 +22,7 @@ mongoose.connect('mongodb://localhost:27017/xmeme', { useNewUrlParser: true, use
 mongoose.set("useCreateIndex", true);
 
 app.use('/', home);
-
+app.use('/users', userRoutes);
 
 
 let port = process.env.PORT;
